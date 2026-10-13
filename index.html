@@ -3,63 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXA-BioInspect | Catálogo Micológico J48</title>
+    <title>NEXA-BioInspect | Motor de Inferencia J48</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
             <h1>NEXA-BioInspect</h1>
-            <p class="subtitle">Evaluador Visual de Especies Micológicas basado en Reglas J48</p>
+            <p class="subtitle">Motor de Inferencia Predictiva - Algoritmo J48 (Mushroom Dataset)</p>
         </header>
 
-        <section class="intro-text">
-            <p>Selecciona una especie representativa del dataset para auditar la decisión del modelo predictivo:</p>
+        <section class="form-section">
+            <p class="instruction">Ingrese las características morfológicas y biológicas del espécimen:</p>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="odor">Perfil Olfativo (Odor):</label>
+                    <select id="odor">
+                        <option value="n">Ninguno (None)</option>
+                        <option value="f">Fétido (Foul)</option>
+                        <option value="p">Picante (Pungent)</option>
+                        <option value="a">Almendra (Almond)</option>
+                        <option value="l">Anís (Anise)</option>
+                        <option value="y">Pescado (Fishy)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="spore-color">Color de Espora (Spore Print):</label>
+                    <select id="spore-color">
+                        <option value="k">Negro (Black)</option>
+                        <option value="n">Marrón (Brown)</option>
+                        <option value="w">Blanco (White)</option>
+                        <option value="h">Chocolate</option>
+                        <option value="r">Verde (Green)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cap-shape">Forma del Sombrero (Cap Shape):</label>
+                    <select id="cap-shape">
+                        <option value="x">Convexo (Convex)</option>
+                        <option value="b">Campanulado (Bell)</option>
+                        <option value="s">Deprimido (Sunken)</option>
+                        <option value="f">Plano (Flat)</option>
+                        <option value="k">Periférico (Knobbed)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="habitat">Hábitat de Crecimiento:</label>
+                    <select id="habitat">
+                        <option value="g">Praderas (Grasses)</option>
+                        <option value="l">Hojas (Leaves)</option>
+                        <option value="m">Prados (Meadows)</option>
+                        <option value="u">Urbanos (Urban)</option>
+                        <option value="w">Bosques (Woods)</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="gill-size">Tamaño de las Branquias (Gill Size):</label>
+                    <select id="gill-size">
+                        <option value="b">Anchas (Broad)</option>
+                        <option value="n">Estrechas (Narrow)</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <button onclick="evaluarModeloJ48()">Ejecutar Motor de Predicción</button>
+                </div>
+            </div>
         </section>
-
-        <div class="cards-grid">
-            <!-- Tarjeta 1: Champiñón Comestible -->
-            <div class="card" onclick="analizarEspecie('agarious', 'Agaricus bisporus (Champiñón Comestible)', 'edible', 'Olor neutro/agradable, láminas libres y esporas marrones. Clasificado como seguro por los umbrales del modelo.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Agaricus_bisporus_%28cultivated_mushroom%29_gills.jpg/640px-Agaricus_bisporus_%28cultivated_mushroom%29_gills.jpg')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Agaricus_bisporus_%28cultivated_mushroom%29_gills.jpg/640px-Agaricus_bisporus_%28cultivated_mushroom%29_gills.jpg" alt="Agaricus bisporus">
-                <div class="card-content">
-                    <h3>Agaricus bisporus</h3>
-                    <span class="badge edible-badge">Comestible</span>
-                </div>
-            </div>
-
-            <!-- Tarjeta 2: Amanita Phalloides (Mortal) -->
-            <div class="card" onclick="analizarEspecie('amanita', 'Amanita phalloides (Tapa de la Muerte)', 'poisonous', 'Detectado perfil olfativo fétido/dulzón y color de espora de alto riesgo. Nodo raíz crítico J48.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Amanita_phalloides_1.jpg/640px-Amanita_phalloides_1.jpg')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Amanita_phalloides_1.jpg/640px-Amanita_phalloides_1.jpg" alt="Amanita phalloides">
-                <div class="card-content">
-                    <h3>Amanita phalloides</h3>
-                    <span class="badge poisonous-badge">Venenoso (Mortal)</span>
-                </div>
-            </div>
-
-            <!-- Tarjeta 3: Amanita Muscaria -->
-            <div class="card" onclick="analizarEspecie('muscaria', 'Amanita muscaria (Falsa Oronja)', 'poisonous', 'Presencia de toxinas biológicas asociadas a perfiles morfológicos específicos y color de espora blanco.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Amanita_muscaria_%28from_above%29.jpg/640px-Amanita_muscaria_%28from_above%29.jpg')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Amanita_muscaria_%28from_above%29.jpg/640px-Amanita_muscaria_%28from_above%29.jpg" alt="Amanita muscaria">
-                <div class="card-content">
-                    <h3>Amanita muscaria</h3>
-                    <span class="badge poisonous-badge">Venenoso / Tóxico</span>
-                </div>
-            </div>
-
-            <!-- Tarjeta 4: Macrolepiota procera -->
-            <div class="card" onclick="analizarEspecie('macrolepiota', 'Macrolepiota procera (Parasol)', 'edible', 'Caracterizado por olor a nuez/neutro y ausencia de perfiles fétidos en el árbol de decisión.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Macrolepiota_procera_v2.jpg/640px-Macrolepiota_procera_v2.jpg')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Macrolepiota_procera_v2.jpg/640px-Macrolepiota_procera_v2.jpg" alt="Macrolepiota procera">
-                <div class="card-content">
-                    <h3>Macrolepiota procera</h3>
-                    <span class="badge edible-badge">Comestible</span>
-                </div>
-            </div>
-        </div>
 
         <!-- Panel de Resultado Dinámico -->
         <div id="result-panel" class="result-panel" style="display: none;">
-            <h2 id="res-title"></h2>
-            <p id="res-desc"></p>
-            <div id="res-verdict" class="verdict-box"></div>
+            <div id="verdict-card" class="verdict-card">
+                <h2 id="res-title"></h2>
+                <p id="res-rule"></p>
+                <div id="res-badge" class="badge"></div>
+            </div>
         </div>
     </div>
 
