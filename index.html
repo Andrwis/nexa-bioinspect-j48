@@ -3,38 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXA-BioInspect | Validador J48</title>
+    <title>NEXA-BioInspect | Simulador J48</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>NEXA-BioInspect: Simulador J48</h1>
-        <p style="text-align: center; font-size: 14px; color: #666;">Sistema inteligente de apoyo a la inspección de toxicidad micológica.</p>
+        <div class="header">
+            <h1>NEXA-BioInspect</h1>
+            <p class="subtitle">Sistema Inteligente de Evaluación Micológica (Algoritmo J48)</p>
+        </div>
         
-        <div class="form-group">
-            <label for="odor">Perfil Olfativo (Odor):</label>
-            <select id="odor">
-                <option value="n">Ninguno (None)</option>
-                <option value="f">Fétido (Foul)</option>
-                <option value="p">Picante (Pungent)</option>
-                <option value="a">Almendra (Almond)</option>
-                <option value="l">Anís (Anise)</option>
-                <option value="y">Pescado (Fishy)</option>
-            </select>
-        </div>
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="odor">Perfil Olfativo (Odor):</label>
+                <select id="odor">
+                    <option value="n">Ninguno (None)</option>
+                    <option value="f">Fétido (Foul)</option>
+                    <option value="p">Picante (Pungent)</option>
+                    <option value="a">Almendra (Almond)</option>
+                    <option value="l">Anís (Anise)</option>
+                    <option value="y">Pescado (Fishy)</option>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label for="spore-color">Color de Huella de Espora (Spore Print Color):</label>
-            <select id="spore-color">
-                <option value="k">Negro (Black)</option>
-                <option value="n">Marrón (Brown)</option>
-                <option value="w">Blanco (White)</option>
-                <option value="h">Chocolate</option>
-                <option value="r">Verde (Green)</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label for="spore-color">Color de Espora (Spore Print):</label>
+                <select id="spore-color">
+                    <option value="k">Negro (Black)</option>
+                    <option value="n">Marrón (Brown)</option>
+                    <option value="w">Blanco (White)</option>
+                    <option value="h">Chocolate</option>
+                    <option value="r">Verde (Green)</option>
+                </select>
+            </div>
 
-        <button onclick="evaluarHongo()">Ejecutar Modelo Predictivo</button>
+            <div class="form-group">
+                <label for="cap-shape">Forma del Sombrero:</label>
+                <select id="cap-shape">
+                    <option value="x">Convexo (Convex)</option>
+                    <option value="b">Campanulado (Bell)</option>
+                    <option value="s">Deprimido (Sunken)</option>
+                    <option value="f">Plano (Flat)</option>
+                    <option value="k">Periférico (Knobbed)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="habitat">Hábitat de Crecimiento:</label>
+                <select id="habitat">
+                    <option value="g">Praderas (Grasses)</option>
+                    <option value="l">Hojas (Leaves)</option>
+                    <option value="m">Prados (Meadows)</option>
+                    <option value="u">Urbanos (Urban)</option>
+                    <option value="w">Bosques (Woods)</option>
+                </select>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="gill-size">Tamaño de las Branquias:</label>
+                <select id="gill-size">
+                    <option value="b">Anchas (Broad)</option>
+                    <option value="n">Estrechas (Narrow)</option>
+                </select>
+            </div>
+
+            <div class="form-group full-width">
+                <button onclick="evaluarHongo()">Ejecutar Análisis Predictivo</button>
+            </div>
+        </div>
 
         <div id="result"></div>
     </div>
