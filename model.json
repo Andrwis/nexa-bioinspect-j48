@@ -1,0 +1,57 @@
+{
+  "modelName": "J48_Mushroom_Exact_Tree",
+  "rootNode": {
+    "attribute": "odor",
+    "branches": {
+      "p": { "result": "poisonous", "rule": "odor = p -> p (256.0)" },
+      "a": { "result": "edible", "rule": "odor = a -> e (400.0)" },
+      "l": { "result": "edible", "rule": "odor = l -> e (400.0)" },
+      "f": { "result": "poisonous", "rule": "odor = f -> p (2160.0)" },
+      "c": { "result": "poisonous", "rule": "odor = c -> p (192.0)" },
+      "y": { "result": "poisonous", "rule": "odor = y -> p (576.0)" },
+      "s": { "result": "poisonous", "rule": "odor = s -> p (576.0)" },
+      "m": { "result": "poisonous", "rule": "odor = m -> p (36.0)" },
+      "n": {
+        "attribute": "spore-print-color",
+        "branches": {
+          "k": { "result": "edible", "rule": "odor = n -> spore-print-color = k -> e (1296.0)" },
+          "n": { "result": "edible", "rule": "odor = n -> spore-print-color = n -> e (1344.0)" },
+          "u": { "result": "edible", "rule": "odor = n -> spore-print-color = u -> e (0.0)" },
+          "h": { "result": "edible", "rule": "odor = n -> spore-print-color = h -> e (48.0)" },
+          "r": { "result": "poisonous", "rule": "odor = n -> spore-print-color = r -> p (72.0)" },
+          "o": { "result": "edible", "rule": "odor = n -> spore-print-color = o -> e (48.0)" },
+          "y": { "result": "edible", "rule": "odor = n -> spore-print-color = y -> e (48.0)" },
+          "b": { "result": "edible", "rule": "odor = n -> spore-print-color = b -> e (48.0)" },
+          "w": {
+            "attribute": "gill-size",
+            "branches": {
+              "b": { "result": "edible", "rule": "odor = n -> spore-print-color = w -> gill-size = b -> e (528.0)" },
+              "n": {
+                "attribute": "gill-spacing",
+                "branches": {
+                  "c": { "result": "poisonous", "rule": "odor = n -> ... -> gill-spacing = c -> p (32.0)" },
+                  "w": {
+                    "attribute": "population",
+                    "branches": {
+                      "s": { "result": "edible", "rule": "Rama terminal población s -> e (0.0)" },
+                      "n": { "result": "edible", "rule": "Rama terminal población n -> e (0.0)" },
+                      "a": { "result": "edible", "rule": "Rama terminal población a -> e (0.0)" },
+                      "v": { "result": "edible", "rule": "Rama terminal población v -> e (48.0)" },
+                      "y": { "result": "edible", "rule": "Rama terminal población y -> e (0.0)" },
+                      "c": { "result": "poisonous", "rule": "Rama terminal población c -> p (16.0)" }
+                    },
+                    "default": { "result": "edible", "rule": "Población por defecto -> e" }
+                  }
+                },
+                "default": { "result": "edible", "rule": "Gill-spacing por defecto -> e" }
+              }
+            },
+            "default": { "result": "edible", "rule": "Gill-size por defecto -> e" }
+          }
+        },
+        "default": { "result": "edible", "rule": "Espora por defecto -> e" }
+      }
+    },
+    "default": { "result": "edible", "rule": "Raíz por defecto -> e" }
+  }
+}
