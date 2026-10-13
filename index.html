@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXA-BioInspect | Validador J48</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>NEXA-BioInspect: Simulador J48</h1>
+        <p style="text-align: center; font-size: 14px; color: #666;">Sistema inteligente de apoyo a la inspección de toxicidad micológica.</p>
+        
+        <div class="form-group">
+            <label for="odor">Perfil Olfativo (Odor):</label>
+            <select id="odor">
+                <option value="n">Ninguno (None)</option>
+                <option value="f">Fétido (Foul)</option>
+                <option value="p">Picante (Pungent)</option>
+                <option value="a">Almendra (Almond)</option>
+                <option value="l">Anís (Anise)</option>
+                <option value="y">Pescado (Fishy)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="spore-color">Color de Huella de Espora (Spore Print Color):</label>
+            <select id="spore-color">
+                <option value="k">Negro (Black)</option>
+                <option value="n">Marrón (Brown)</option>
+                <option value="w">Blanco (White)</option>
+                <option value="h">Chocolate</option>
+                <option value="r">Verde (Green)</option>
+            </select>
+        </div>
+
+        <button onclick="evaluarHongo()">Ejecutar Modelo Predictivo</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
